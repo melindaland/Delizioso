@@ -1,0 +1,168 @@
+{% extends "aside.twig" %} {# en fr #}
+
+{% block title %}
+Catalogue
+{% endblock %}
+
+{% block nav1 %}
+<a href="categorie1_catalogue-fr.php">
+    <img src="images/img_menu/france.jpeg" alt="Langue 1">
+</a>
+{% endblock %}
+{% block nav2 %}
+<a href="categorie1_catalogue-it.php">
+    <img src="images/img_menu/italie.jpeg" alt="Langue 2">
+</a>
+{% endblock %}
+
+{% block contenu %}
+
+<!-- Main -->
+
+<div class="block-fils">
+    <h1>
+        CATALOGUE :
+
+    </h1>
+    <h2>
+        Top 5 des gâteaux les plus populaires
+
+    </h2>
+    {% for gateau in categorie %}
+    <h3>
+        <a href="#gateau{{ gateau.id }}">
+            {{ gateau.nom }}
+        </a>
+    </h3>
+    {% endfor %}
+    {# Boucle qui va prendre en compte les informations sur le gâteau ci-dessous#}
+
+    {% for gateau in categorie %}
+    <h3>
+        {{ gateau.nom }}
+    </h3>
+    <div class="gateau_container" id="gateau{{ gateau.id }}">
+
+        <div class="image-gateau">
+            {# Insertion image #}
+            <img src="{{ gateau.url_image }}" alt="{{ gateau.alt_image }}">
+            <p>
+                {{ gateau.commentaire }}
+            </p>
+        </div>
+
+        <div class="texte1-gateau">
+            <h4>
+                Provenance📍:
+
+                {{ gateau.pays }}
+            </h4>
+            <h4>
+                Créateur 👨‍🍳:
+                {{ gateau.createur }}
+            </h4>
+            <h4>
+                Histoire 📖 :
+
+            </h4>
+            <p>
+                {{ gateau.biographie }}
+            </p>
+        </div>
+        <div class="texte2-gateau">
+            <h4>
+                Composition du
+
+                {{ gateau.nom }}
+                🍰 :
+
+            </h4>
+            <p>
+                {{ gateau.description }}
+            </p>
+        </div>
+        <div class="video-gateau">
+            <h4>
+                Comment réaliser le gâteau :
+
+                {{ gateau.nom }}
+                ?
+
+            </h4>
+            {# Insertion lien-video #}
+            <a href="{{ gateau.video }}">
+                Voir la recette du
+
+                {{ gateau.nom }}
+                en vidéo 🎬
+            </a>
+        </div>
+        <h3>Informations complémentaires</h3>
+        <div class="infos">
+            <div class="commentaires">
+                <h4>Avis des internautes : <h4>
+                {% for commentaire in gateau.commentaires %}
+                <div class="commentaire">
+                    <p>{{ commentaire.utilisateur }} a dit : {{ commentaire.avis }}</p>
+                    <p>Note : {{ commentaire.note }}/5</p>
+                </div>
+                {% endfor %}
+            </div>
+        
+            <div class="note">
+                <h4>Evaluation : </h4>
+                <p>Temps de préparation : {{ gateau.note.tempspreparation }}</p>
+                <p>Difficulté : {{ gateau.note.difficulte }}</p>
+                <p>Niveau : {{ gateau.note.niveau }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock contenu %}
+
+{% block aside %}
+<aside>
+    <div class="aside">
+        <h3>
+            Quelles sont les créations de Chiboust 🤔 ?
+
+        </h3>
+        <ul>
+            <li><a href="https://fr.wikipedia.org/wiki/Gâteau_trois-frères" target="_blank">Gâteau Trois Frères</a></li>
+            <li><a href="https://fr.wikipedia.org/wiki/Crème_chiboust" target="_blank">Crème Chiboust</a></li>
+            <li><a href="https://fr.wikipedia.org/wiki/Saint-honoré_(pâtisserie)" target="_blank">Histoire du
+                    Saint-Honoré</a></li>
+        </ul>
+    </div>
+    <div class="aside">
+        <h3>
+            Tout savoir sur l'Angel Cake 🤨 ?
+
+        </h3>
+        <ul>
+            <li><a href="https://liliebakery.fr/angel-food-cake-gateau-des-anges/" target="_blank">Recette du Angel
+                    Cake</a></li>
+            <li><a href="https://www.magimix.fr/recettes/angel-cake-aux-framboises_c" target="_blank">Une proposition
+                    originale</a></li>
+            <li><a href="https://www.laboutiqueapatisser.com/moule-a-gateau-des-anges-25-cm-a821.html"
+                    target="_blank">Acheter le moule spécial pour le gâteau des anges</a></li>
+        </ul>
+    </div>
+    <div class="aside">
+        <h3>
+            Quelles sont les variantes du Forêt Noire 🧐 ?
+
+        </h3>
+        <ul>
+            <li><a href="https://www.hervecuisine.com/recette/foret-blanche-passion-chocolat-blanc/"
+                    target="_blank">Réaliser la Forêt Blanche</a></li>
+            <li><a href="https://www.simpleetgourmand.fr/recettes/foret-noire-framboises/" target="_blank">Réaliser la
+                    Vosgienne</a></li>
+            <li><a href="https://atelierbrover.com/fr/recettes/foret-noire-amarena/" target="_blank">Réaliser la Forêt
+                    aux Amarenas</a></li>
+        </ul>
+    </div>
+</aside>
+{% endblock aside %}

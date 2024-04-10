@@ -1,0 +1,168 @@
+{% extends "aside.twig" %}{# en fr #}
+
+{% block title %}
+    Recettes   
+{% endblock %}
+
+{% block nav1 %}
+    <a href="categorie3_recette-fr.php">
+        <img src="images/img_menu/france.jpeg" alt="Langue 1">
+    </a>
+{% endblock %}
+{% block nav2 %}
+    <a href="categorie3_recette-it.php">
+        <img src="images/img_menu/italie.jpeg" alt="Langue 2">
+    </a>
+</li>
+{% endblock %}
+
+{% block contenu %}
+
+    {# MAIN #}
+    <div class="block-fils">
+        <h1>
+            RECETTES :
+        </h1>
+        <h2>
+            Idées de recettes à faire chez soi
+        </h2>
+
+        <h3>
+            1...2...3...Pâtissez
+        </h3>
+        <p>
+            Découvrez les secrets des desserts exquis, apprenez les astuces des professionnels et inspirez-vous de notre vaste collection de recettes créatives. Avec nos tutoriels explicatifs, maîtrisez les techniques pour créer des chefs-d'œuvre sucrés avec aisance.
+        </p>
+
+        {# Boucle qui va prendre en compte les informations sur la recette #}
+        {% for recette in categorie %}
+            <h3>
+                <a href="#recette{{ recette.id }}">
+                    {{ recette.gateau }}
+                </a>
+            </h3>
+        {% endfor %}
+
+        {% for recette in categorie %}
+            <div class="recette_container" id="recette{{ recette.id }}">
+                <h2>
+                    {{ recette.gateau }}
+                </h2>
+                <div class="recette">
+                    <section class="presentation-recette">
+                        {# Insertion image #}
+                        <img src="{{ recette.image }}" alt="Image de {{ recette.gateau }}">
+                            <p>
+                                {{ recette.presentation }}
+                            </p>
+                        </section>
+                        <div class="ingredients-materiaux">
+                            <section class="ingredients">
+                                <h3>
+                                    Ingrédients 🍰:
+                                </h3>
+                                <ul>
+                                    {# Boucle qui va parcourir les éléments de la liste recette.ingredients #}
+                                    {% for ingredient in recette.ingredients %}
+                                        <li>
+                                            {{ ingredient }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </section>
+                            <section>
+                                <h3>
+                                    Ustensiles 🥣:
+                                </h3>
+                                <ul>
+                                    {# Boucle qui va parcourir les éléments de la liste recette.materiaux #}
+                                    {% for materiel in recette.materiaux %}
+                                        <li>
+                                            {{ materiel }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </section>
+                        </div>
+                        <section>
+                            <h3>
+                                Etapes 📝:
+                            </h3>
+                            <ol>
+                                {# Boucle qui va parcourir les éléments de la liste recette.instructions #}
+                                {% for etape in recette.instructions %}
+                                    <li>
+                                        {{ etape }}
+                                    </li>
+                                {% endfor %}
+                            </ol>
+
+                            <h3>
+                                Tutoriel vidéo 🎬 :
+                            </h3>
+                            <div class="tutoriel">
+                                {# Insertion vidéo #}
+                                <div class="video-container">
+                                    <iframe width="400" height="225" src="{{ recette.tutovideo }}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+    {% block aside %}
+        <aside>
+            <div class="aside">
+                <h3>
+                    Gâteau au Caramel :
+                </h3>
+                <ul>
+                    <li>
+                        <a href="https://www.iletaitungateau.com/articles/311" target="_blank">
+                            Cliquer pour voir la recette 🍮
+                        </a>
+                    </li>
+                </ul>
+                <h3>
+                    Banana Bread :
+                </h3>
+                <ul>
+                    <li>
+                        <a href="https://empreintesucree.fr/banana-bread/" target="_blank">
+                            Cliquer pour voir la recette 🍌
+                        </a>
+                    </li>
+                </ul>
+                <h3>
+                    Gâteau au citron :
+                </h3>
+                <ul>
+                    <li>
+                        <a href="https://www.lesnouillesalacompote.com/recettes-sucrees/gateau-moelleux-citron-jean-francois-piege" target="_blank">
+                            Cliquer pour voir la recette 🍋
+                        </a>
+                    </li>
+                </ul>
+                <h3>
+                    Layer cake au Chocolat :
+                </h3>
+                <ul>
+                    <li>
+                        <a href="https://empreintesucree.fr/layer-cake-au-chocolat/" target="_blank">
+                            Cliquer pour voir la recette 🍫
+                        </a>
+                    </li>
+                </ul>
+                <h3>
+                    Gâteau Mocha :
+                </h3>
+                <ul>
+                    <li><a href="https://patissland.fr/blogs/blog-de-recettes-patissland/recette-du-moka-mocha" target="_blank">Cliquer pour voir la recette ☕️</a></li>
+                </ul>
+            </div>
+        </aside>
+    {% endblock aside %}
+    

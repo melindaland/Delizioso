@@ -1,0 +1,159 @@
+{% extends "aside.twig" %} {# en it #}
+
+{% block title %}
+Catalogare
+{% endblock %}
+
+{% block nav1 %}
+<a href="categorie1_catalogue-fr.php">
+    <img src="images/img_menu/france.jpeg" alt="Langue 1">
+</a>
+{% endblock %}
+{% block nav2 %}
+<a href="categorie1_catalogue-it.php">
+    <img src="images/img_menu/italie.jpeg" alt="Langue 2">
+</a>
+{% endblock %}
+
+{% block contenu %}
+
+<!-- Main -->
+
+<div class="block-fils">
+    <h1>
+        CATALOGARE :
+    </h1>
+    <h2>
+        Le 5 torte più popolari
+
+    </h2>
+    {% for gateau in categorie %}
+    <h3>
+        <a href="#gateau{{ gateau.id }}">
+            {{ gateau.nom }}
+        </a>
+    </h3>
+    {% endfor %}
+    {# Boucle qui va prendre en compte les informations sur le gâteau ci-dessous#}
+
+    {% for gateau in categorie %}
+    <h3>
+        {{ gateau.nom }}
+    </h3>
+    <div class="gateau_container" id="gateau{{ gateau.id }}">
+
+        <div class="image-gateau">
+            {# Insertion image #}
+            <img src="{{ gateau.url_image }}" alt="{{ gateau.alt_image }}">
+            <p>
+                {{ gateau.commentaire }}
+            </p>
+        </div>
+
+        <div class="texte1-gateau">
+            <h4>
+                Origine📍: {{ gateau.pays }}
+            </h4>
+            <h4>
+                Creatore 👨‍🍳:
+                {{ gateau.createur }}
+            </h4>
+            <h4>
+                Storia 📖 :
+
+            </h4>
+            <p>
+                {{ gateau.biographie }}
+            </p>
+        </div>
+        <div class="texte2-gateau">
+            <h4>
+                Composizione di
+                {{ gateau.nom }}
+                🍰 :
+            </h4>
+            <p>
+                {{ gateau.description }}
+            </p>
+        </div>
+        <div class="video-gateau">
+            <h4>
+                Come fare la torta :
+                {{ gateau.nom }}
+                ?
+            </h4>
+            {# Insertion lien-video #}
+            <a href="{{ gateau.video }}">
+                Vedi la ricetta per {{ gateau.nom }} in video 🎬
+            </a>
+        </div>
+        <h3>Ulteriori informazioni</h3>
+            <div class="infos">
+                <div class="commentaires">
+                    <h4>Recensioni degli utenti : <h4>
+                            {% for commentaire in gateau.commentaires %}
+                            <div class="commentaire">
+                                <p>{{ commentaire.utilisateur }} disse : {{ commentaire.avis }}</p>
+                                <p>Nota : {{ commentaire.note }}/5</p>
+                            </div>
+                            {% endfor %}
+                </div>
+
+                <div class="note">
+                    <h4>Valutazione : </h4>
+                    <p>Tempo di preparazione : {{ gateau.note.tempspreparation }}</p>
+                    <p>Difficoltà : {{ gateau.note.difficulte }}</p>
+                    <p>Livello : {{ gateau.note.niveau }}</p>
+                </div>
+            </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock contenu %}
+
+{% block aside %}
+<aside>
+    <div class="aside">
+        <h3>
+            Quali sono le creazioni di Chiboust 🤔 ?
+
+        </h3>
+        <ul>
+            <li><a href="https://fr.wikipedia.org/wiki/Gâteau_trois-frères" target="_blank">Torta Tre Fratelli</a></li>
+            <li><a href="https://fr.wikipedia.org/wiki/Crème_chiboust" target="_blank">Crema Chiboust</a></li>
+            <li><a href="https://fr.wikipedia.org/wiki/Saint-honoré_(pâtisserie)" target="_blank">Storia di
+                    Santo onorato</a></li>
+        </ul>
+    </div>
+    <div class="aside">
+        <h3>
+            Tutto quello che devi sapere sulla Torta Angelo 🤨 ?
+
+        </h3>
+        <ul>
+            <li><a href="https://liliebakery.fr/angel-food-cake-gateau-des-anges/" target="_blank">La ricetta dell'angelo
+                    Torta</a></li>
+            <li><a href="https://www.magimix.fr/recettes/angel-cake-aux-framboises_c" target="_blank">Una proposta
+                    originale</a></li>
+            <li><a href="https://www.laboutiqueapatisser.com/moule-a-gateau-des-anges-25-cm-a821.html"
+                    target="_blank">Acquista lo speciale stampo per torta angel food</a></li>
+        </ul>
+    </div>
+    <div class="aside">
+        <h3>
+        Quali sono le variazioni della Foresta Nera 🧐 ?
+
+        </h3>
+        <ul>
+            <li><a href="https://www.hervecuisine.com/recette/foret-blanche-passion-chocolat-blanc/"
+                    target="_blank">Crea la Foresta Bianca</a></li>
+            <li><a href="https://www.simpleetgourmand.fr/recettes/foret-noire-framboises/" target="_blank">Effettuare il
+                    Vosgi</a></li>
+            <li><a href="https://atelierbrover.com/fr/recettes/foret-noire-amarena/" target="_blank">Crea la foresta
+                    alle Amarena</a></li>
+        </ul>
+    </div>
+</aside>
+{% endblock aside %}

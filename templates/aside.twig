@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block main %}
+    <div class="elements">
+        <div class="contenu">
+            {% block contenu %}<!-- Contenu spécifique à contenu -->
+            {% endblock contenu %}
+        </div>
+        <div class="aside">
+            {% block aside %}<!-- Contenu spécifique à aside -->
+            {% endblock aside %}
+        </div>
+    </div>
+{% endblock main %}
+

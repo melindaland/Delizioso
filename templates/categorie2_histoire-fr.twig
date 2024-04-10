@@ -1,0 +1,109 @@
+{% extends "aside.twig" %} {# en fr #}
+
+{% block title %}
+    Histoire
+{% endblock %}
+
+{% block nav1 %}
+    <a href="categorie2_histoire-fr.php">
+        <img src="images/img_menu/france.jpeg" alt="Langue 1">
+    </a>
+{% endblock %}
+{% block nav2 %}
+    <a href="categorie2_histoire-it.php">
+        <img src="images/img_menu/italie.jpeg" alt="Langue 2">
+    </a>
+</li>
+{% endblock %}
+
+{% block contenu %}  
+    <!-- MAIN -->
+    <div class="block-fils">
+        <h1> HISTOIRE :</h1>
+        <h2>Une exploration pleine de gourmandises</h2>
+
+        {% for origine in categorie %}
+            <h3><a href="#origine{{ origine.id }}">{{ origine.soustitre }}</a></h3>
+        {% endfor %}
+
+        {# Boucle qui va prendre en compte les informations sur la catégorie histoire ci-dessous#}
+        {% for origine in categorie %}
+            <div class="origine_container" id="origine{{ origine.id }}">
+                    <h3>{{ origine.soustitre }}</h3>
+                    <div class="images-histoire">
+                         {# Insertion d'images #}
+                        <div class="imgun">
+                          <img src="{{ origine.image1 }}" alt="{{ origine.alt_image1 }}">
+                        </div>
+                        <div class="imgdeux">
+                          <img src="{{ origine.image2 }}" alt="{{ origine.alt_image2 }}">
+                        </div>
+                        <div class="imgtrois">
+                          <img src="{{ origine.image3 }}" alt="{{ origine.alt_image3 }}">
+                        </div>
+                    </div>
+
+                    <div class="texte-histoire">
+                     <p>{{ origine.texte }}</p>
+                    </div>
+            </div>
+
+            <div class="tableau">
+                <h4>Où trouver {{ origine.article}} ? </h4>
+                {# Tableau  #}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Ville</th>
+                            <th>Adresse</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for boutique in origine.boutiques %}
+                        <tr>
+                            <td>{{ boutique.nom }}</td>
+                            <td>{{ boutique.ville }}</td>
+                            <td>{{ boutique.adresse }}</td>
+                            <td>{{ boutique.note }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            
+        {% endfor %}
+    </div>
+{% endblock contenu %}
+
+{% block aside %}
+    <aside>
+        <div class="aside">
+            <h3>Viens découvrir les origines de la pâtisserie :</h3>
+            <ul>
+                <li><a href="https://labeteapain.com/histoire-de-la-patisserie/#:~:text=L%27Histoire%20de%20la%20p%C3%A2tisserie%20a%20d%C3%A9but%C3%A9%20il%20y%20a,la%20fois%20ind%C3%A9modables%20et%20%C3%A9volutives." target="_blank">Article sur la naissance de la pâtisserie</a></li>
+                <li><a href="https://www.alatitecuillere.fr/decouvrez-quel-pays-a-les-meilleurs-patisseries-selon-les-experts/" target="_blank">La France : le meilleur pays en pâtisserie</a></li>
+            </ul>
+            <h3>Les chefs pâtissiers renommés :</h3>
+            <ul>
+                <li><a href="https://fr.wikipedia.org/wiki/Cédric_Grolet" target="_blank">Cédric Grolet</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/Christophe_Adam" target="_blank">Christophe Adam</a></li>
+                <li><a href="https://fr.wikipedia.org/wiki/Cyril_Lignac" target="_blank">Cyril Lignac</a></li>
+            </ul>
+            <h3>Les desserts favoris des gourmands :</h3>
+            <ul>
+                <li><a href="https://www.atelierdeschefs.fr/recettes/22922/tarte-au-citron/" target="_blank">Tarte au citron</a></li>
+                <li><a href="https://www.pierre-thorez.com/23-petits-gateaux/550-millefeuille" target="_blank">Millefeuille</a></li>
+                <li><a href="https://www.meilleurduchef.com/fr/recette/eclair-chocolat.html" target="_blank">Éclair au chocolat</a></li>
+            </ul>
+            <h3>Les compétitions de pâtisserie à ne pas manquer !</h3>
+            <ul>
+                <li><a href="https://www.6play.fr/le-meilleur-patissier-p_1807" target="_blank">Voir : Série "Le Meilleur Pâtissier"</a></li>
+                <li><a href="https://www.youtube.com/watch?v=qo0ftbXHuLw" target="_blank">Voir : Bande-annonce "C'est du Gâteau"</a></li>
+                <li><a href="https://www.youtube.com/watch?v=LwE6KMVcRqk" target="_blank">Voir : Bande-annonce "Pâtisserie"</a></li>
+            </ul>
+        </div>
+    </aside>
+{% endblock aside %}

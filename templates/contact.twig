@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block title %}
+   Contact 
+   
+{% endblock %}
+
+{% block main %}
+
+   <h1>
+      CONTACT
+   </h1>
+
+   <div class="formulaire">
+      <h2>
+         Se connecter pour recevoir de nouvelles recettes :
+      </h2>
+      <h3>
+         De nouvelles recettes et de nouveaux articles vous attendent 😊
+      </h3>
+      <form action="reception.php" method="POST">
+         <label for="mail">
+            E-mail :
+         </label>
+         <input type="email" id="mail" name="user_mail">
+            <label for="lname">
+               Pseudo:
+            </label>
+            <input type="text" id="lname" name="lname">
+               <label for="password">
+                  Mot de passe :
+               </label>
+               <input type="password" id="password" name="user_password">
+                  <button type="submit">
+                     Se connecter
+                  </button>
+               </form>
+            </div>
+
+{% endblock main %}
+         
